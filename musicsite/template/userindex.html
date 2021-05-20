@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}
+    welcome to music
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% block data %}
+    <link  rel="stylesheet"  href="{% static 'css/bootstrap.css' %}"/>
+    <div class="container">
+        <div>
+            <ul >
+                <li>首页</li>
+                <li>最新</li>
+                <li>最热</li>
+                <li>歌单</li>
+                <li>歌手</li>
+                <li id="display">更多<b class="caret"></b></li>
+            </ul>
+            <div>
+                <input type="text" pattern="歌手或者歌曲名称" id="searchValue"/>
+                <input type="button" value="搜索" id="search"/>
+            </div>
+            <div>
+                <!-------登陆后图标和用户名的显示区域-------->
+                <img src="{% static 'tmpimg/54.jpg' %}"   style="border-radius: 50%; width:20px;height:20px;" id="myImg"/>
+                <span id="username">{{ data.user }}</span>
+            </div>
+        </div>
+        <div>
+            <ul id="moreList">
+                <li>我的</li>
+                <li>帮助</li>
+                <li>客服</li>
+                <li>反馈</li>
+            </ul>
+        </div>
+        <div id="mainBody">
+                <!---显示歌名---->
+                {% for item in data.ge_ming %}
+                <p>{{item}}</p>
+                {% endfor %}
+        </div>
+         <ul id="fastMenu" style="display:none;">
+                <li id="love">添加到我的音乐</li>
+                <li id="myMusic">自定义歌单</li>
+         </ul>
+    </div>
+    {% endblock %}
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var i = 0;
+        $("#moreList").hide();
+        var array = ["{% static 'image/img1.jpg'%}","{% static 'image/img2.jpg'%}","{% static 'image/img3.jpg'%}","{% static 'image/img4.jpg'%}","{% static 'image/img5.jpg'%}","{% static 'image/img6.jpg'%}","{% static 'image/img7.jpg'%}","{% static 'image/img8.jpg'%}"];
+        $("#display").click(function(){
+            if(i%2==0){
+                $("#moreList").slideDown();
+            }
+            else{
+                $("#moreList").slideUp();
+            }
+            i++;
+        });
+    });
+</script>
+<script src="{% static 'js/userindex.js' %}"></script>
+{% endblock %}

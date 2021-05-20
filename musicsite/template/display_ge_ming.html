@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    歌单
+{% endblock %}
+{% block content %}
+{% load static %}
+<link  rel="stylesheet"  href="{% static 'css/bootstrap.css' %}"/>
+<!------头部自定义----------->
+<div></div>
+<!-----歌名列表------->
+<div id="ge_ming">
+    {% block ge_ming %}
+    {% for item in ge_ming %}
+    <p>{{ item }}</p>
+    {% endfor %}
+    {% endblock %}
+</div>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{% static 'js/display_ge_ming.js' %}"></script>
+{% endblock %}

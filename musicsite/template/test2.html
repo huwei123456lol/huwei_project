@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        {% block ge_ci %}
+            {{ ge_ci }}
+        {% endblock %}
+    </div>
+    <div>
+    {% block ge_ming %}
+        {% for item in ge_ming %}
+            {{ item }}
+        {% endfor %}
+    {% endblock %}
+    </div>
+</body>
+</html>

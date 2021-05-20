@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    用户登陆
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <link  rel="stylesheet"  href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}"/>
+    <div class="diyi">
+	    <label class=>用户名:</label>
+	    <input type="text" id="username" name="username" placeholder="用户名" style="width: 150px;height: 17px;">
+	</div>
+	<div class="dier">
+	    <label>密&nbsp;&nbsp;&nbsp;码:</label>
+	    <input type="password" id="password" name="password" style="width: 150px;height: 17px;margin-left: 2px;">
+	</div>
+	<div>
+	    <input type="button" id="submit" name="submit" value="登陆"class='denglu'>
+		<button id="register" name="register" class='denglu'>注册</button>
+	</div>
+	<div class='disan'>
+	    <input type="button" id="cancle" name="cancle" value="退出" style="border: 0px; color: red;"/>
+	</div>
+
+<img src="{% static 'image/rw.png'%}" class="rw">
+	<div class="bfq"><img src="{% static 'image/bfq.png'%}"  style="width: 20%;height: 20%;"></div>
+	<div class="tb"><img src="{% static 'image/tb.png'%}" style="width: 20%;height: 20%;"></div>
+	<div class="tb2"><img src="{% static 'image/tb2.png'%}" style="width: 10%;height: 10%;"></div>
+<div class="yf"><img src="{% static 'image/yf.png'%}" style="width: 15%;height: 15%;"></div>
+	<div class="yf2"><img src="{% static 'image/yf.png'%}" style="width: 20%;height: 20%;">
+	<div class="kongbai"></div>
+
+
+    </div>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}

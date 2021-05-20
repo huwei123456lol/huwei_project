@@ -1,0 +1,66 @@
+.jianju{
+	width: 1400px;
+	height: 1900px;
+	padding-left: 300px;
+}
+body{
+	margin: 0px;
+}
+.shixian{
+	width: 100%;
+	height: 1px;
+	background-color: #dcdcdc;
+	margin-left: -65px;
+}
+.shixian ul{
+	margin: auto;
+	font-size: 20px;
+	color: #eeeeee;
+	
+}
+.shixian ul li{
+	display:inline-block;
+	margin-top: 10px;
+	padding: 22px;
+}
+.srk{
+	margin-left: 700px;
+	margin-top: -47px;
+}
+.denglu{
+	margin-left: 1000px;
+	margin-top: -25px;
+}
+.tpwz{
+	margin-top: 100px;
+	
+}
+.x{
+	height: 2px;
+	width: 1000px;
+	background: black;
+}
+.hx{
+	margin-left: 400px;
+	margin-top: -368px;
+}
+.hx1{
+	margin-left: 800px;
+	margin-top: -368px;
+}
+.jiewei{
+	margin-left: 300px;
+	color: black;
+	margin-top: 40px;
+}
+.jiewei1{
+	background-color: #A9A9A9;
+	width: 1500px;
+	height: 100px;
+	margin-top: -60px;
+	
+}
+.dh{
+	height: 100px;
+	background-color: #000000;
+}

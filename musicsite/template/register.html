@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+    用户注册
+{% endblock %}
+{% block content %}
+{% load static %}
+<link  rel="stylesheet"  href="{% static 'css/bootstrap.css' %}"/>
+<link rel="stylesheet"  href="{% static 'css/user.css' %}"/>
+<h4 class="zuo2"><img src="{% static 'image/1.png'%}" width="50px"height="50px"><div class="zhuce">音乐播放器注册页面</div></h4>
+<div class="kongbai">
+<p>
+    <label><span class="yanse">*</span>用户名:&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="username" name="username" placeholder="用户名"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>密&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;</label>
+    <input type="password" id="password" name="password" class="xiangyou"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>确认密码:</label>
+    <input type="password" id="passwordAgain" name="passwordAgain"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>图&nbsp;&nbsp;&nbsp;片:&nbsp;&nbsp;&nbsp;</label>
+    <input type="file" id="myImg" name="myImg" accept="image/jpeg, image/gif,image/png"/>
+    <img id="img" name="img" src="#" alt="图片无法显示" width="40px" height="40px"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>姓&nbsp;&nbsp;&nbsp;名:&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="name" name="name" placeholder="姓名"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>出生日期:</label>
+    <input type="date" id="birthday" name="birthday" class="suo"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>性&nbsp;&nbsp;&nbsp;别:&nbsp;&nbsp;&nbsp;</label>
+    <input type="radio" id="nan"/>男
+    <input type="radio" id="nv"/>女
+</p>
+<p>
+    <label><span class="yanse">*</span>邮&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;&nbsp;</label>
+    <input type="email" id="email" placeholder="1010011@qq.com"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>电&nbsp;&nbsp;&nbsp;话:&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="phone" placeholder="电话号码"/>
+</p>
+<p>
+    <label><span class="yanse">*</span>我喜欢:&nbsp;&nbsp;&nbsp;</label>
+    <input type="text" id="aihao" placeholder="爱好：比如篮球" class="zuo3"/>
+</p>
+<p>
+    <input type="button" id="submit" name="submit" value="提交" class="zuo"/>
+    <input type="button" id="cancle" name="cancle" value="取消"/>
+</p>
+<p class="zuo1">请注意这里带<span class="yanse">*</span>是必填的！</p>
+<div class="hua"><img src="{% static 'image/hua.png'%}"></div>
+<img src="{% static 'image/hua1.png'%}" width="20%" class="hua1">
+<div class="erji"><img src="{% static 'image/erji.png'%}" width="20%" ></div>
+<div class="music2"><img src="{% static 'image/music2.png'%}" width="30%" ></div>
+</div>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{% static 'js/register.js' %}"></script>
+<script>
+    $(function(){
+        $("#img").hide();
+    });
+</script>
+{% endblock %}

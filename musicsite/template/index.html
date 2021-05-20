@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}
+    welcome to music
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <link  rel="stylesheet"  href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/2.css'%}" />
+    <div class="dh">
+        <div class="jianqu">
+            <div>
+            <div class="shixian">
+            <ul type="none">
+                <li>首页</li>
+                <li>最新</li>
+                <li>最热</li>
+                <li>歌单</li>
+                <li>歌手</li>
+                <li id="display">更多<b class="caret"></b></li>
+            </ul>
+            <div class="srk">
+                <input type="text" placeholder="歌手或者歌曲名称" id="searchValue" style="height: 20px;"/>
+                <input type="button" value="搜索" id="search" style="height: 25px;"/>
+            </div>
+            <div class="denglu">
+                <a href="/my_music/user/login" style="color: #eeeeee;">登陆</a>
+            </div>
+        </div>
+        <div>
+            <ul id="moreList">
+                <li>我的</li>
+                <li>帮助</li>
+                <li>客服</li>
+                <li>反馈</li>
+            </ul>
+        </div>
+        <div id="main_body" class="tpwz img_dis">
+            <div id="display_img">
+            <img id="block_img" src="{% static 'image/img1.jpg'%}"/>
+            </div>
+        </div>
+            <div class="tpwz img_two">
+                <!---显示歌单--->
+                <img src="{% static 'image/guofeng.jpg' %}"/>
+                <img src="{% static 'image/minyao.jpg' %}" />
+            </div>
+            <div id="ge_ming_list">
+                <!---显示歌名---->
+                {% block ge_ming %}
+                    {% for item in ge_ming %}
+                    <p>{{ item }}</p>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+            </div>
+        </div>
+        <div class='jiewei'><a href="#" style="color: black;">公司版权所有有限责任公司所有</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合作有限电话：173&nbsp;1397&nbsp;4506<span style="color: #d4d5d7;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" style="color: #EEEEEE;">服务条款</a>&nbsp;|&nbsp;<a href="#" style="color: #EEEEEE;">隐私政策</a>&nbsp;|&nbsp;<a href="#" style="color: #EEEEEE;">儿童隐私政策</a>&nbsp;|&nbsp;<a href="#" style="color: #EEEEEE;">版权投诉指引</a>&nbsp;|&nbsp;<a href="#" style="color: #EEEEEE;">意见反馈</a>&nbsp;|</span></div>
+	<div class="jiewei1"></div>
+    </div>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        var i = 0;
+        var index = 0;
+        $("#moreList").hide();
+        var array = ["{% static 'image/img1.jpg'%}","{% static 'image/img2.jpg'%}","{% static 'image/img3.jpg'%}","{% static 'image/img4.jpg'%}","{% static 'image/img5.jpg'%}","{% static 'image/img6.jpg'%}","{% static 'image/img7.jpg'%}","{% static 'image/img8.jpg'%}"];
+        $("#display").click(function(){
+            if(i%2==0){
+                $("#moreList").slideDown();
+            }
+            else{
+                $("#moreList").slideUp();
+            }
+            i++;
+        });
+        var img = document.getElementById("block_img");
+        setInterval(function(){
+            for(var j = 0; j <= array.length-1; j++){
+                if(j==array.length-1){
+                    img.src=array[j];
+                    j=0;
+                }
+                else{
+                    img.src=array[j];
+                }
+            }
+        },20000);
+        $("#display_img").click(function(){
+            if (index < array.length-1){
+                img.src = array[++index];
+            }
+            else{
+                index = 0;
+                img.src = array[index];
+            }
+        });
+    });
+</script>
+{% endblock %}

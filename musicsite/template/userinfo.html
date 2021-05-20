@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+我的信息
+{% endblock %}
+{% block content %}
+{% load static %}
+<link  rel="stylesheet"  href="{% static 'css/bootstrap.css' %}"/>
+<!-----------用户个人信息界面--------->
+{% block data %}
+<div id="infoId">
+    {{ data.id }}
+</div>
+<div>
+    <p>
+    <label>姓名:</label>
+    <input type="text" id="name" name="name" placeholder="姓名" value="{{ data.name }}"/>
+</p>
+<p>
+    <label>出生日期:</label>
+    <input type="text" id="birthday" name="birthday" value="{{ data.birthday}}"/>
+</p>
+<p>
+    <label>性别:</label>
+    <input type="text" id="sex" value="{{data.sex}}">
+</p>
+<p>
+    <label>邮箱:</label>
+    <input type="email" id="email" placeholder="1010011@qq.com" value="{{ data.email }}"/>
+</p>
+<p>
+    <label>电话:</label>
+    <input type="text" id="phone" placeholder="电话号码" value="{{ data.phone }}"/>
+</p>
+<p>
+    <label>我喜欢:</label>
+    <input type="text" id="aihao" placeholder="爱好：比如篮球" value="{{ data.ai_hao }}"/>
+</p>
+    {% endblock %}
+<p>
+    <input type="button" id="submit" name="submit" value="更改"/>
+    <input type="button" id="cancle" name="cancle" value="退出"/>
+</p>
+</div>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{% static 'js/userinfo.js'%}"></script>
+{% endblock %}

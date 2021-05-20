@@ -1,0 +1,63 @@
+body{
+	background-image: url(../image/bg.jpg);
+	background-size:115%;
+	background-repeat: no-repeat;
+}
+.diyi{
+	margin-left: 700px;
+	margin-bottom: 20px;
+	margin-top: 200px;
+	font-weight: bold;
+}
+.dier{
+	margin-left: 700px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.kongbai{
+	margin-left: -223px;
+	margin-top: -130px;
+	width: 350px;
+	height: 340px;
+	background: #ffffff;
+}
+.denglu{
+	margin-left: 702px;
+	margin-bottom: 20px;
+	width: 210px;
+	height: 30px;
+	background: #7ae175;
+	border: #7AE175;
+	font-size: 15px;
+	color: #FFFFFF;
+	
+}
+.disan{
+	margin-left: 1400px;
+	font-weight: bold;
+	margin-top: -350px;
+}
+.rw{
+	margin-left: 1300px;
+	margin-top: 400px;
+}
+.bfq{
+	margin-top: -190px;
+}
+.tb{
+	margin-top: -500px;
+	margin-left: 1100px;
+}
+.tb2{
+	margin-left: -850px;
+	margin-top: -80px;
+}
+.yf{
+	margin-top: -300px;
+	margin-left: -450px;
+}
+.yf2{
+	margin-left: 200px;
+	margin-top: -135px;
+}

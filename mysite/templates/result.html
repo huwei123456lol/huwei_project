@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>网上结算界面</title>
+	</head>
+	<body id="body">
+		<table>
+			<thead>商品结算</thead>
+			<tbody>
+				<tr>
+					<td>商品名称</td>
+					<td>商品样式</td>
+					<td>商品价格</td>
+				</tr>
+				{% for shop in shopValue %}
+					<tr>
+						<td>{{shop[0]}}</td>
+						<td><img src="{{shop[1]}}" width="20px" height="20px"/></td>
+						<td>{{ shop[2] }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div>
+			<label>总价格:</label>
+			<span><!----显示价格----->{{shopValue[0][2]}}</span>
+			<button>结算</button>
+			<button id="cancle">返回</button>
+		</div>
+	</body>
+	<script>
+		var bcancle = document.getElementById("cancle");
+		bcancle.addEventListener("click",function(){
+			{% if user %}
+				self.location = "/"+{{user}};
+			{% else %}
+				self.location = "/user/login";
+			{% endif %}
+		});
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('bg') == "01" %}
+			vbody.style.background = "blue";
+		{% elif systemvalue.get('bg') == "02" %}
+			vbody.style.background = "yellow";
+		{% else %}
+			vbody.style.background = "red";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('fontcolor') == "41" %}
+			vbody.style.color = "green";
+		{% elif systemvalue.get('fontcolor') == "42" %}
+			vbody.style.color = "blue";
+		{% else %}
+			vbody.style.color = "yellow";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('fontsize') == "31" %}
+			vbody.style.fontSize = "24px";
+		{% elif systemvalue.get('fontsize') == "32" %}
+			vbody.style.fontSize = "36px";
+		{% else %}
+			vbody.style.fontSize = "12px";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('transparency') == "21" %}
+			vbody.style.opacity = 0.7;
+		{% elif systemvalue.get('transparency') == "22" %}
+			vbody.style.opacity = 1;
+		{% else %}
+			vbody.style.opacity = 0.3;
+		{% endif %}
+	</script>
+</html>

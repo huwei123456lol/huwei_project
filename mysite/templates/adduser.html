@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>添加用户</title>
+	</head>
+	<body>
+		<!-------只要是这个界面添加的用户默认为普通用户--------->
+		<form action="/admin/user" method="post" enctype="multipart/form-data">
+			<p>
+				<label>用户名:</label>
+				<input type="text" name="username" placeholder="用户名" id="username"/>
+			</p>
+			<p>
+				<label>密&nbsp;&nbsp;&nbsp;码:</label>
+				<input type="password" name="password" id="password"/>
+			</p>
+			<p>
+				<input type="submit" value="添加"/>
+				<input type="button" value="取消" id="cancle"/>
+			</p>
+		</form>
+	</body>
+	<script type="application/javascript" src="{{url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script type="application/javascript" src="{{url_for('static',filename='js/clear1.js')}}"></script>
+</html>

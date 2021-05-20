@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>查看表结构</title>
+	</head>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/add.css')}}"/>
+	<body>
+		<table border="1px">
+			<thead>{{tablename}}</thead>
+			<tbody>
+				{% for hang in tableattr %}
+					<tr>
+						{% for i in hang %}
+							<td>{{i}}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<p><span class="addData">添加数据</span> <span class="lookData">查看数据</span></p>
+	</body>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/nowadd7.js')}}"></script>
+</html>

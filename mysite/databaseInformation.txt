@@ -1,0 +1,5 @@
+"user":"root";
+"password":"lx5201314";
+"host":"localhost";
+"port": 3306;
+"database":"mysite";

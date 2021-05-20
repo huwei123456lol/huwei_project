@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>用户登陆</title>
+	</head>
+	<link rel="stylesheet" href="{{url_for('static',filename='css/login4.css')}}"/>
+	<body id="body">
+		<a href="register">我要注册</a>
+		<div class="login">
+			<h1>登陆</h1>
+			<form action="/user/login" name="login" method="post" enctype="multipart/form-data">
+				<p>
+					<label>用户名:</label>
+					<!---将用户名和密码验证从后端移动到前端--->
+					<input type="text" name="username" placeholder="用户名" id="username"/>
+				</p>
+				<p>
+					<label>密&nbsp;&nbsp;&nbsp;码:</label>
+					<input type="password" name="password" id="password"/>
+				</p>
+				<p>
+					<!-------随机密码验证--------->
+					<input type="text" name="check" placeholder="请输入验证码"/>
+					&nbsp;&nbsp;&nbsp;
+					{% block content %}
+						{{ randomcheck }}
+					{% endblock %}
+				</p>
+				<p>
+					<input type="text" hidden="hidden" value="0" id="admin" name="goAdmin"/>
+				</p>
+				<p>
+					<input type="submit" value="登陆" id="login"/>
+					<input type="button" value="取消" id="cancle"/>
+				</p>
+			</form>
+		</div>
+	</body>
+	<script src="{{url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script type="application/javascript" src="{{url_for('static',filename='js/clear1.js')}}"></script>
+	<script>
+		var blogin = document.getElementById("login");
+		var iadmin = document.getElementById("admin");
+		blogin.addEventListener("click",function(){
+			var answer = confirm("你想进入后台管理界面？")
+			if(answer == true){
+				iadmin.value = 1;
+			}
+			else{
+				iadmin.value = 0;
+			}
+		});
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('bg') == "01" %}
+			vbody.style.background = "blue";
+		{% elif systemvalue.get('bg') == "02" %}
+			vbody.style.background = "yellow";
+		{% else %}
+			vbody.style.background = "red";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('fontcolor') == "41" %}
+			vbody.style.color = "green";
+		{% elif systemvalue.get('fontcolor') == "42" %}
+			vbody.style.color = "blue";
+		{% else %}
+			vbody.style.color = "yellow";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('fontsize') == "31" %}
+			vbody.style.fontSize = "24px";
+		{% elif systemvalue.get('fontsize') == "32" %}
+			vbody.style.fontSize = "36px";
+		{% else %}
+			vbody.style.fontSize = "12px";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('transparency') == "21" %}
+			vbody.style.opacity = 0.7;
+		{% elif systemvalue.get('transparency') == "22" %}
+			vbody.style.opacity = 1;
+		{% else %}
+			vbody.style.opacity = 0.3;
+		{% endif %}
+	</script>
+</html>

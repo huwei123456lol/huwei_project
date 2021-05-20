@@ -1,0 +1,41 @@
+<!----这是一个管理员登陆界面------->
+<!-----管理员应该具有添加，删除数据库的权限-------->
+<!-----管理员应该具有添加，删除普通用户的权限------->
+<html>
+	<head>
+		<title>管理界面</title>
+	</head>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/update.css')}}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/del.css')}}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/add.css')}}"/>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/lookup.css')}}"/>
+	<body>
+		<p>
+			<div style="background: blue;">数据表</div>
+			<span class="addtable">添加</span>
+			<ul type="none">
+				{% for table in tables %}
+					<br>
+					<li>{{ table[0] }}<span class="bgcolor">查看</span><span class="deltable">删除</span></li>
+				{% endfor %}
+			</ul>
+		</p>
+		<p>
+			<div style="background: blue;">用户组</div>
+			<span class="adduser">添加</span>
+			<ul type="none">
+				{% for user in users %}
+					{% if username != user[0] %}
+						<li>{{ user[0] }}<span class="updateuser">更改</span><span class="deluser">删除</span></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</p>
+	</body>
+	<!-----使用js添加点击事件-------->
+	<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/update6.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/nowDel5.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/nowadd7.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/lookup3.js')}}"></script>
+</html>

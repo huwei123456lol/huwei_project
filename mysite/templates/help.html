@@ -1,0 +1,41 @@
+<!------用户帮助界面------>
+<html>
+	<head>
+		<title>帮助</title>
+	</head>
+	<body>
+		<div id="display">
+			<p>
+				你好,{{username}}。请问有什么需要帮助的吗？
+			</p>
+		</div>
+		<div>
+			<p>
+				<input type="text" id="inputData"/>
+			</p>
+			<p>
+				<button id="fasong">发送</button>
+			</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="{{url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script>
+		var display=document.getElementById("display");
+		var inputData = document.getElementById("inputData");
+		var fasong=document.getElementById("fasong");
+		fasong.addEventListener("click",function(){
+			var content=inputData.value;
+			inputData.value="";
+			display.innerHTML=display.innerHTML+"<p>"+content+"</p>";
+			$.ajax({
+				url:"/system/dealData",
+				type:"POST",
+				data:{"content":content},
+				datatype:"json",
+				success:function(data){
+					display.innerHTML=display.innerHTML+"<p>"+data+"</p>";
+				}
+			});
+		});
+	</script>
+</html>

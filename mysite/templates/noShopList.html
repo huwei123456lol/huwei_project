@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>购物车</title>
+	</head>
+	<body>
+		{% if username %}
+			<span>{{username}}</span>
+		{% endif %}
+		<div>
+			<img src="{{url_for('static',filename='image/noshoplist.jpg')}}"/>
+		</div>
+		<div>
+			<button id="goShopping">我要购物</button>
+		</div>
+	</body>
+	<script>
+		var bgoShopping = document.getElementById("goShopping");
+		bgoShopping.addEventListener("click",function(){
+			self.location = "/"+{{username}};
+		});
+	</script>
+</html>

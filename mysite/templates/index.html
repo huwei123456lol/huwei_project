@@ -1,0 +1,140 @@
+<html>
+	<head>
+		<title>首页</title>
+	</head>
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/special.css')}}"/>
+	<body id="body">
+		{% if username %}
+			<h1>你好!<span id="username">{{ username }}</span></h1>
+			<script>
+				user = document.getElementById("username");
+				user.addEventListener("click",function(){
+					$.ajax({
+						url: "/user/information",
+						type: "POST",
+						data: {"username": this.innerText},
+						datatype: "json",
+						success: function(data){
+							if(data == "ok"){
+								alert("跳转到个人信息界面!");
+								self.location = "/user/information";
+							}
+							else{
+								alert("服务器异常！");
+							}
+						}
+					});
+				})
+			</script>
+		{% else %}
+			<a href="user/login">我要登陆</a>
+		{% endif %}
+		<span id="systemset">设置</span>
+		<span id="help">帮助</span>
+		<span class="shopList">查看购物车</span>
+		<div>
+			<ul type="none">
+				{% for item in shopValue %}
+					<li>
+						<span hidden="True">{{ item[0] }}</span>
+						<img src="{{item[1]}}" class="img"/>
+						<span>{{item[2]}}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="{{url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script>
+		$(function(){
+			var help=document.getElementById("help");
+			help.addEventListener("click",function(){
+				{% if username %}
+					self.location="/system/help/{{username}}";
+				{% else %}
+					self.location="/user/login";
+				{% endif %}
+			});
+		}());
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$("img.img").click(function(){
+				$.ajax({
+					url: "/shop/play",
+					type: "post",
+					data: {"id": this.previousElementSibling.innerText},
+					datatype: "json",
+					success: function(data){
+						if(data == 'ok'){
+								alert("跳转到商品展示界面");
+								self.location = "/shop/play";
+							}
+						else{
+								alert("数据错误");
+							}
+					}
+				});
+			});
+			$("span.shopList").click(function(){
+				$.ajax({
+					url: "/shop/shoplist/lookup",
+					type: "POST",
+					success: function(data){
+						if(data == "error"){
+							self.location = "/user/login";
+						} 
+						else if(data == "dataerror"){
+							self.location = "/shop/noShopList";
+						}
+						else{
+							self.location = "/shop/shoplist/lookup";
+						}
+					}
+				});
+			});
+			var systemset = document.getElementById("systemset");
+			systemset.addEventListener("click",function(){
+				self.location = "/system/set";
+			});
+			var vbody = document.getElementById("body");
+			{% if systemvalue.get('bg') == "01" %}
+				vbody.style.background = "blue";
+			{% elif systemvalue.get('bg') == '02' %}
+				vbody.style.background = "yellow";
+			{% else %}
+				vbody.style.background = "red";
+			{% endif %}
+		}());
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('fontcolor') == "41" %}
+			vbody.style.color = "green";
+		{% elif systemvalue.get('fontcolor') == "42" %}
+			vbody.style.color = "blue";
+		{% else %}
+			vbody.style.color = "yellow";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('fontsize') == "31" %}
+			vbody.style.fontSize = "24px";
+		{% elif systemvalue.get('fontsize') == "32" %}
+			vbody.style.fontSize = "36px";
+		{% else %}
+			vbody.style.fontSize = "12px";
+		{% endif %}
+	</script>
+	<script>
+		var vbody = document.getElementById("body");
+		{% if systemvalue.get('transparency') == "21" %}
+			vbody.style.opacity = 0.7;
+		{% elif systemvalue.get('transparency') == "22" %}
+			vbody.style.opacity = 1;
+		{% else %}
+			vbody.style.opacity = 0.3;
+		{% endif %}
+	</script>
+</html>

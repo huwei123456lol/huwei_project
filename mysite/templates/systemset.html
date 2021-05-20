@@ -1,0 +1,90 @@
+<!----这是一个系统设置界面------->
+<html>
+	<head>
+		<title>系统设置界面</title>
+	</head>
+	<body id="body">
+		<form action="/system/set" method="post" enctype="multipart/form-data">
+			<p>
+				<label>背景</label>
+				<input type="radio" name="bg" value="00" checked="checked"/>红色
+				<input type="radio" name="bg" value="01"/>蓝色
+				<input type="radio" name="bg" value="02"/>黄色
+			</p>
+			<p>
+				<label>背景音乐</label>
+				<input type="radio" name="bgmusic" value="10" checked="checked"/>baby
+				<input type="radio" name="bgmusic" value="11"/>god is a girl
+				<input type="radio" name="bgmusic" value="12"/>only time
+			</p>
+			<p>
+				<label>透明度</label>
+				<input type="radio" name="transparency" value="20"/>阴暗
+				<input type="radio" name="transparency" value="21"/>一般
+				<input type="radio" name="transparency" value="22" checked="checked"/>明亮
+			</p>
+			<p>
+				<label>字体大小</label>
+				<input type="radio" name="fontsize" value="30" checked="checked"/>小
+				<input type="radio" name="fontsize" value="31"/>中
+				<input type="radio" name="fontsize" value="32"/>大
+			</p>
+			<p>
+				<label>字体颜色</label>
+				<input type="radio" name="fontcolor" value="40" checked="checked"/>黄
+				<input type="radio" name="fontcolor" value="41"/>绿
+				<input type="radio" name="fontcolor" value="42"/>蓝
+			</p>
+			<p>
+				<input type="submit" value="确定"/>
+				<button id="cancle">取消</button>
+			</p>
+		</form>
+	</body>
+	<script type="text/javascript" src="{{url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script>
+		//怎么通过systemvalue的值来判断选择的是哪一个 通过jquery的属性选择器选择所有带有value属性的元素,然后迭代
+		$(function(){
+			var bgs = document.getElementsByName("bg");
+			var transparencys = document.getElementsByName("transparency");
+			var fontsizes = document.getElementsByName("fontsize");
+			var bgmusics = document.getElementsByName("bgmusic");
+			var fontcolors = document.getElementsByName("fontcolor");
+			var lens=3;
+			for(var i=0;i<lens;i=i+1){
+				if(bgs[i].value=={{systemvalue.get('bg')}}){
+					bgs[i].checked="checked";
+				}
+				if(transparencys[i].value == {{systemvalue.get('transparency')}}){
+					transparencys[i].checked = "checked";
+				}
+				if(fontsizes[i].value == {{systemvalue.get('fontsize')}}){
+					fontsizes[i].checked = "checked";
+				}
+				if(bgmusics[i].value == {{systemvalue.get('bgmusic')}}){
+					bgmusics[i].checked = "checked";
+				}
+				if(fontcolors[i].value == {{systemvalue.get('fontcolor')}}){
+					fontcolors[i].checked = "checked";
+				}
+			}
+		}());
+	</script>
+	<script>
+		var bcancle = document.getElementById("cancle");
+		bcancle.addEventListener("click",function(){
+			$.ajax({
+				url:"/system/returnIndex",
+				type:"GET",
+				success:function(data){
+					if(data==""){
+						self.location="/";
+					}
+					else{
+						self.location = "/"+data;
+					}
+				}
+			});
+		});
+	</script>
+</html>

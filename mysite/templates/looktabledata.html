@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>查看数据表数据</title>
+	</head>
+	<body>
+		<table border="1px">
+			<thead>{{ tablename }}</thead>
+			<tbody>
+				<tr>
+					{% for i in tableattr %}
+						<td>{{i[0]}}</td>
+					{% endfor %}
+				</tr>
+				{% for item in tablevalue %}
+					<tr>
+						{% for i in item %}
+							<td>{{i}}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<p>
+			<button id="yes" onclick="returnAdmin()">确定</button>
+		</p>
+	</body>
+	<script type="text/javascript">
+		function returnAdmin(){
+			self.location = '/admin/';
+		}
+	</script>
+</html>

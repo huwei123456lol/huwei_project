@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>添加数据表</title>
+	</head>
+	<body>
+		<form action="/admin/table" method="post" enctype="multipart/form-data">
+			<p>
+				<label>表名:</label>
+				<input type="text" name="tablename" placeholder="最好使用英文" value=""/>
+			</p>
+			<p>
+				<label>属性名:</label>
+				<input type="text" name="attribute0" placeholder="最好使用英文" value=""/>
+			</p>
+			<p>
+				<label>属性类型:</label>
+				<input type="text" name="texttype0" placeholder="属性类型" value=""/>
+			</p>
+			<p>
+				<label>长度:</label>
+				<input type="number" name="length0" value=""/>
+			</p>
+			<p>
+				<label>是否为空:</label>
+				<input type="radio" name="isNull0" value="null"/>空
+				<input type="radio" name="isNull0" value="not null"/>非空
+			</p>
+			<p>
+				<div id="addAttribute"></div>
+				<!----点击这里可以添加属性---->
+				<span class="addattribute">添加属性</span>
+			</p>
+			<p>
+				<!-----将属性个数传给后台----->
+				<input type="text" name="attributeCount"  id="attributeCount" hidden="True" value="1"/> 
+			</p>
+			<!-----暂时不支持关键字的选择------->
+			<p>
+				<input type="submit" value="提交"/>
+				<input type="button" value="取消"/>
+			</p>
+		</form>
+	</body>
+	<script type="application/javascript" src="{{url_for('static',filename='js/jquery-3.2.1.min.js')}}"></script>
+	<script type="application/javascript" src="{{url_for('static',filename='js/addtable7.js')}}"></script>
+</html>

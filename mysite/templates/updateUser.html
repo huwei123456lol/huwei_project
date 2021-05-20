@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>更改用户</title>
+	</head>
+	<body>
+		<form action="/admin/user/updating" enctype="multipart/form-data" method="post">
+			<p>
+				<label>用户名:</label>
+				<input type="text" disabled="True" value="{{username}}"/>
+				<input type="text" name="username" value="{{username}}" hidden="true"/>
+			</p>
+			<p>
+				<label>密&nbsp;&nbsp;&nbsp;码:</label>
+				<input type="password" name="password"/>
+			</p>
+			<p>
+				<input type="submit" value="更改"/>
+				<input type="button" value="取消" id="cancle"/>
+			</p>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+//关于c++中lambda的使用
+#include<stdio.h>
+using namespace std;
+int main()
+{
+	int a=1;
+	int b=1;
+	auto func=[=,&b](int c)->int{return b+=a+c;};
+	/*
+	**lambda的格式:[capture](parameters)mutable->return_type{statement}
+	**capture捕捉列表 =是以按值传递 ；&是以按址传递
+	**mutable 修饰符，默认情况下lambda函数是一个const函数，mutable可以取消其常量性。使用该修饰符，参数列表不能省略
+	
+	*/
+	return 0;
+}
